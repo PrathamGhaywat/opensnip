@@ -1,4 +1,5 @@
 import { Code, Search, Share2, Zap } from "lucide-react";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -17,10 +18,18 @@ export default function Home() {
             <a href="#github" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
               GitHub
             </a>
+            <ThemeToggle />
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
               Get Started
             </button>
           </nav>
+          {/* Mobile navigation */}
+          <div className="md:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-medium transition-colors text-sm">
+              Get Started
+            </button>
+          </div>
         </div>
       </header>
 
