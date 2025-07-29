@@ -25,8 +25,9 @@ export default function Login() {
     try {
       await login(email, password);
       router.push('/dashboard');
-    } catch {
-      setError('Invalid email or password. Please try again.');
+    } catch (error) {
+      const err = error as Error;
+      setError(err.message);
     } finally {
       setLoading(false);
     }

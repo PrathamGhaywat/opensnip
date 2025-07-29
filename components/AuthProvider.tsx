@@ -40,13 +40,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const login = async (email: string, password: string) => {
-    await account.createEmailPasswordSession(email, password);
-    await checkUser();
+    try {
+      await account.createEmailPasswordSession(email, password);
+      await checkUser();
+    } catch (error) {
+      const err = error as { code?: number; message?: string; type?: string };
+      if (err.code === 429) {
+        throw new Error('Too many login attempts. Please wait a few minutes and try again.');
+      } else if (err.code === 401) {
+        throw new Error('Invalid email or password. Please check your credentials.');
+      } else {
+        throw new Error(err.message || 'Login failed. Please try again.');
+      }
+    }
   };
 
   const signup = async (email: string, password: string, name: string) => {
-    await account.create('unique()', email, password, name);
-    await login(email, password);
+    try {
+      await account.create('unique()', email, password, name);
+      await login(email, password);
+    } catch (error) {
+      const err = error as { code?: number; message?: string; type?: string };
+      if (err.code === 429) {
+        throw new Error('Too many signup attempts. Please wait a few minutes and try again.');
+      } else if (err.code === 409) {
+        throw new Error('An account with this email already exists. Please try logging in instead.');
+      } else {
+        throw new Error(err.message || 'Account creation failed. Please try again.');
+      }
+    }
   };
 
   const logout = async () => {
@@ -63,10 +85,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const forgotPassword = async (email: string) => {
-    await account.createRecovery(
-      email,
-      `${window.location.origin}/reset-password`
-    );
+    try {
+      await account.createRecovery(
+        email,
+        `${window.location.origin}/reset-password`
+      );
+    } catch (error) {
+      const err = error as { code?: number; message?: string; type?: string };
+      if (err.code === 429) {
+        throw new Error('Too many password reset requests. Please wait a few minutes and try again.');
+      } else {
+        throw new Error(err.message || 'Failed to send reset email. Please try again.');
+      }
+    }
   };
 
   const value = {

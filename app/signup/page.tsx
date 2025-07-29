@@ -40,8 +40,9 @@ export default function Signup() {
     try {
       await signup(email, password, name);
       router.push('/dashboard');
-    } catch {
-      setError('Failed to create account. Please try again.');
+    } catch (error) {
+      const err = error as Error;
+      setError(err.message);
     } finally {
       setLoading(false);
     }
