@@ -1,4 +1,4 @@
-import { Code, Search, Share2, Zap } from "lucide-react";
+import { Code, Search, Share2, Zap, Check, Users, Bot } from "lucide-react";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function Home() {
@@ -14,6 +14,9 @@ export default function Home() {
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#features" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
               Features
+            </a>
+            <a href="#pricing" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              Pricing
             </a>
             <a href="#github" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
               GitHub
@@ -66,21 +69,22 @@ export default function Home() {
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <span className="text-slate-400 text-sm ml-4">snippet-manager.js</span>
             </div>
-            <pre className="text-green-400 text-sm font-mono overflow-x-auto">
-              <code>{`// Quick React hook example
-const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    const item = window.localStorage.getItem(key);
-    return item ? JSON.parse(item) : initialValue;
-  });
-  
-  const setValue = (value) => {
-    setStoredValue(value);
-    window.localStorage.setItem(key, JSON.stringify(value));
-  };
-  
-  return [storedValue, setValue];
-};`}</code>
+            <pre className="text-sm font-mono overflow-x-auto">
+              <code>
+                <span className="text-blue-400">const</span> <span className="text-yellow-300">useLocalStorage</span> = (<span className="text-orange-400">key</span>, <span className="text-orange-400">initialValue</span>) =&gt; {'{'}
+                {'\n'}  <span className="text-blue-400">const</span> [<span className="text-white">storedValue</span>, <span className="text-white">setStoredValue</span>] = <span className="text-yellow-300">useState</span>(() =&gt; {'{'}
+                {'\n'}    <span className="text-blue-400">const</span> <span className="text-white">item</span> = <span className="text-white">window</span>.<span className="text-white">localStorage</span>.<span className="text-yellow-300">getItem</span>(<span className="text-white">key</span>);
+                {'\n'}    <span className="text-purple-400">return</span> <span className="text-white">item</span> ? <span className="text-white">JSON</span>.<span className="text-yellow-300">parse</span>(<span className="text-white">item</span>) : <span className="text-white">initialValue</span>;
+                {'\n'}  {'}'});
+                {'\n'}  
+                {'\n'}  <span className="text-blue-400">const</span> <span className="text-yellow-300">setValue</span> = (<span className="text-orange-400">value</span>) =&gt; {'{'}
+                {'\n'}    <span className="text-yellow-300">setStoredValue</span>(<span className="text-white">value</span>);
+                {'\n'}    <span className="text-white">window</span>.<span className="text-white">localStorage</span>.<span className="text-yellow-300">setItem</span>(<span className="text-white">key</span>, <span className="text-white">JSON</span>.<span className="text-yellow-300">stringify</span>(<span className="text-white">value</span>));
+                {'\n'}  {'}'};
+                {'\n'}  
+                {'\n'}  <span className="text-purple-400">return</span> [<span className="text-white">storedValue</span>, <span className="text-white">setValue</span>];
+                {'\n'}{'}'};
+              </code>
             </pre>
           </div>
         </div>
@@ -262,6 +266,117 @@ const useLocalStorage = (key, initialValue) => {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+              Simple, transparent pricing
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300">
+              Choose the plan that fits your needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Individual Plan */}
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-xl border border-slate-200 dark:border-slate-800 relative">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Individual</h3>
+                <div className="mb-4">
+                  <span className="text-5xl font-bold text-slate-900 dark:text-white">Free</span>
+                </div>
+                <p className="text-slate-600 dark:text-slate-300">Perfect for personal projects</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Unlimited snippets</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Lightning fast search</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Syntax highlighting for 100+ languages</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Public snippet sharing</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Dark & light themes</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Export & backup</span>
+                </li>
+              </ul>
+
+              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors">
+                Get Started Free
+              </button>
+            </div>
+
+            {/* Team Plan */}
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-xl border-2 border-blue-500 relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                  Most Popular
+                </span>
+              </div>
+              
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Team</h3>
+                <div className="mb-2">
+                  <span className="text-5xl font-bold text-slate-900 dark:text-white">$5</span>
+                  <span className="text-slate-600 dark:text-slate-400 ml-2">per seat/month</span>
+                </div>
+                <p className="text-slate-600 dark:text-slate-300">For teams and organizations</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Everything in Individual</span>
+                </li>
+                <li className="flex items-center">
+                  <Users className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Private team workspaces</span>
+                </li>
+                <li className="flex items-center">
+                  <Users className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Share with team members only</span>
+                </li>
+                <li className="flex items-center">
+                  <Bot className="h-5 w-5 text-purple-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">AI-powered snippet generation</span>
+                </li>
+                <li className="flex items-center">
+                  <Bot className="h-5 w-5 text-purple-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Smart code suggestions</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300">Priority support</span>
+                </li>
+              </ul>
+
+              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors">
+                Start Team Trial
+              </button>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-slate-600 dark:text-slate-400">
+              Need something custom? <a href="#contact" className="text-blue-600 hover:text-blue-700 font-medium">Contact us</a> for enterprise solutions.
+            </p>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 text-center">
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-12 shadow-xl border border-slate-200 dark:border-slate-800">
@@ -282,7 +397,7 @@ const useLocalStorage = (key, initialValue) => {
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-slate-600 dark:text-slate-400">
-            Open source and free for Individuals and Selfhosting forever.
+            Built with ❤️ for developers. Free for individuals, forever.
           </p>
         </div>
       </footer>
