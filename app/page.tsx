@@ -22,16 +22,19 @@ export default function Home() {
               GitHub
             </a>
             <ThemeToggle />
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+            <a href="/login" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              Login
+            </a>
+            <a href="/signup" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
               Get Started
-            </button>
+            </a>
           </nav>
           {/* Mobile navigation */}
           <div className="md:hidden flex items-center space-x-3">
             <ThemeToggle />
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-medium transition-colors text-sm">
+            <a href="/signup" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-medium transition-colors text-sm">
               Get Started
-            </button>
+            </a>
           </div>
         </div>
       </header>
